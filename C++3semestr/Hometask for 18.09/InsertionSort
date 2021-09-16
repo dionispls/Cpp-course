@@ -16,7 +16,5 @@ int main(){
     }
     i++;
     }
-    for (int n:v)
-        std::cout << n << " ";
 return 0;
 }
