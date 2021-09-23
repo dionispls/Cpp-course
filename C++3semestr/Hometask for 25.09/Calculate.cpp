@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <functional>
 
 double calculate(double a, double b,std::function<double(double, double)> c){
         return (c(a, b));
