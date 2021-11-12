@@ -4,7 +4,7 @@ Maybe it will be the final version. Who knows?
 
 "RP Game.cpp" -  the main program
 
-"color.hpp" - needed to change color. Thanks to imfl(https://github.com/imfl) for conributing.
+"color.hpp" - needed to change color. Thanks to imfl(https://github.com/imfl) for contributing.
 
 "Map" - folder with all the maps
 
