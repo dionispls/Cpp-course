@@ -2,6 +2,7 @@ This is a beta version of our game "Student World of Tanks".
 Maybe it will be the final version. Who knows?
 
 "RP Game.cpp" -  the main program
+
 "color.hpp" - needed to change color. Thanks to imfl(https://github.com/imfl) for conributing.
 "Map" - folder with all the maps
 "Tank.h" and "Tank.cpp" - "Tank" class loaded
