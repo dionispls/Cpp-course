@@ -21,7 +21,7 @@ Created by:
 
 Ionidis Ekaterina
 
-Shtraix Robert
+Shtraikh Robert
 
 Belostockiy Artemiy
 
