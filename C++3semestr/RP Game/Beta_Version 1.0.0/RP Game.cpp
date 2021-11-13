@@ -1,53 +1,54 @@
 #include "all_includes.h"
+
 using namespace std;
 
 
 int main(){
     string name;
-    int j = 0;
-    int cur, cur1;
-    string mp[13];//карта
+    int j = 0;//РїР°СЂР°РјРµС‚СЂ РґР»СЏ РІС‹Р±РѕСЂР° С‚Р°РЅРєР°/РєР°СЂС‚С‹
+    int cur, cur1;//РЅРѕРјРµСЂ С‚Р°РЅРєР° Рё РєР°СЂС‚С‹ РїРѕ СЃС‡РµС‚Сѓ
+    string mp[13];//РєР°СЂС‚Р°
     bool it = true;
-    vector<int> stats = {100, 50, 20, 20, 50};
-    vector<string> TankVariants = {"T-34 (higher Hp)", "T-54 (higher Damage)", "T-90 (Higher Chance of Crit)", "T-95 (higher Chance of Escape)", "T-14 (higher Xp gained per kill)"};//вектор танкa
-    vector<string> MapVariants = {"Mirage", "Dune", "Inferno", "Cache", "Overpass", "Dust II", "Nuke", "BOSS"};//вектор карт
+    vector<int> stats = {100, 50, 20, 20, 50};//РёР·РЅР°С‡Р°Р»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ С‚Р°РЅРєР°
+    vector<string> TankVariants = {"T-34 (higher Hp)", "T-54 (higher Damage)", "T-90 (Higher Chance of Crit)", "T-95 (higher Chance of Escape)", "T-14 (higher Xp gained per kill)"};//РІРµРєС‚РѕСЂ С‚Р°РЅРєРѕРІ
+    vector<string> MapVariants = {"Mirage", "Dune", "Inferno", "Cache", "Overpass", "Dust II", "Nuke", "BOSS"};//РІРµРєС‚РѕСЂ РєР°СЂС‚
 
     cout << "Press \'q\' to quit, press any other key to continue";
-     if (getch() == 113) //нажатие q отменяет игру
+     if (getch() == 113) //РЅР°Р¶Р°С‚РёРµ q РѕС‚РјРµРЅСЏРµС‚ РёРіСЂСѓ
             return 0;
-    clr; //очищает экран
+    clr; //РѕС‡РёС‰Р°РµС‚ СЌРєСЂР°РЅ
     cout << "Enter your name" << endl;
     cin >> name;
-    clr; //очищает экран
+    clr; //РѕС‡РёС‰Р°РµС‚ СЌРєСЂР°РЅ
 
-    while (it){//Выбор танка
+    while (it){//Р’С‹Р±РѕСЂ С‚Р°РЅРєР°
     cout << "Hello, " << name << "! Welcome to Student WOT. Please select your tank:" <<endl;
     cout<< "(Up and down arrow to navigate, Enter to select, q to quit)"<<endl;
-    for(int i = 0; i< TankVariants.size(); i++){//выбор танка
+    for(int i = 0; i< TankVariants.size(); i++){//РІС‹Р±РѕСЂ С‚Р°РЅРєР°
         if (i == j%TankVariants.size()){
-            cout << dye::green(TankVariants[i]) <<endl;//танка, который сейчас выбран подсвечен зеленым
+            cout << dye::green(TankVariants[i]) <<endl;//С‚Р°РЅРєР°, РєРѕС‚РѕСЂС‹Р№ СЃРµР№С‡Р°СЃ РІС‹Р±СЂР°РЅ РїРѕРґСЃРІРµС‡РµРЅ Р·РµР»РµРЅС‹Рј
         }
         else{
         cout << TankVariants[i] <<endl;}
     }
     int c = getch();
     switch(c){
-    case 72://верхняя стрелка
+    case 72://РІРµСЂС…РЅСЏСЏ СЃС‚СЂРµР»РєР°
         j--;
-        clr; //очищает экран
+        clr; //РѕС‡РёС‰Р°РµС‚ СЌРєСЂР°РЅ
         break;
-    case 80://нижняя стрелка
+    case 80://РЅРёР¶РЅСЏСЏ СЃС‚СЂРµР»РєР°
         j++;
-        clr; //очищает экран
+        clr; //РѕС‡РёС‰Р°РµС‚ СЌРєСЂР°РЅ
         break;
-    case 13://кнопка enter
+    case 13://РєРЅРѕРїРєР° enter
             cur = j;
             clr;
             it = false;
             break;
-    case 113: //нажатие q отменяет игру
+    case 113: //РЅР°Р¶Р°С‚РёРµ q РѕС‚РјРµРЅСЏРµС‚ РёРіСЂСѓ
             return 0;
-    default:
+    default://РµСЃР»Рё Р±С‹Р»Р° РЅР°Р¶Р°С‚Р° РґСЂСѓРіР°СЏ РєР»Р°РІРёС€Р°
         clr;
         break;
 
@@ -73,11 +74,11 @@ int main(){
     }
     MyTank.upd(stats);
 
-    map_selection://выбор карты, сюда если что возвращаемся
+    map_selection://РІС‹Р±РѕСЂ РєР°СЂС‚С‹, СЃСЋРґР° РµСЃР»Рё С‡С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµРјСЃСЏ
     j = 0;
     it = true;
 
-    while(it){//аналогично танкам
+    while(it){//Р°РЅР°Р»РѕРіРёС‡РЅРѕ С‚Р°РЅРєР°Рј
         cout << "Please, select a map :" <<endl;
         for(int i = 0; i< MapVariants.size(); i++){
         if (i == j%MapVariants.size()){
@@ -90,44 +91,44 @@ int main(){
     switch(c){
     case 72:
         j--;
-        clr; //очищает экран
+        clr; //РѕС‡РёС‰Р°РµС‚ СЌРєСЂР°РЅ
         break;
     case 80:
         j++;
-        clr; //очищает экран
+        clr; //РѕС‡РёС‰Р°РµС‚ СЌРєСЂР°РЅ
         break;
     case 13:
-            cur1 = j;
-            clr;
-            it = false;
-            break;
-    case 113: //нажатие q отменяет игру
-            return 0;
+        cur1 = j;
+        clr;
+        it = false;
+        break;
+    case 113: //РЅР°Р¶Р°С‚РёРµ q РѕС‚РјРµРЅСЏРµС‚ РёРіСЂСѓ
+        return 0;
     default:
         clr;
         break;
 
     }}
 
-    for (int i = 3; i > 0;i--){//загрузка
+    for (int i = 3; i > 0;i--){//Р·Р°РіСЂСѓР·РєР°
     cout << "Starting in " << i << "..."<<endl;
     Sleep(800);
-    clr; //очищает экран
+    clr; //РѕС‡РёС‰Р°РµС‚ СЌРєСЂР°РЅ
     }
 
-    cur1 = (cur1 + MapVariants.size()*100)%MapVariants.size();//костыль от негативного j
+    cur1 = (cur1 + MapVariants.size()*1000)%MapVariants.size();//РєРѕСЃС‚С‹Р»СЊ РѕС‚ РЅРµРіР°С‚РёРІРЅРѕРіРѕ j
     cur1++;
-    stringstream ss;//делаем из cur1 string
+    stringstream ss;//РґРµР»Р°РµРј РёР· cur1 string
     ss<<cur1;
     string s;
     ss>>s;
     ifstream F;
-    F.open("Maps\\Map"+s+".txt");//загрузка нужной карты
+    F.open("Maps\\Map"+s+".txt");//Р·Р°РіСЂСѓР·РєР° РЅСѓР¶РЅРѕР№ РєР°СЂС‚С‹
     for (int i = 0;i <13; i++)
-        F>>mp[i];//сохраняем карту в массив
+        F>>mp[i];//СЃРѕС…СЂР°РЅСЏРµРј РєР°СЂС‚Сѓ РІ РјР°СЃСЃРёРІ
     F.close();
 
-    for (int i = 0;i <13; i++){//иницилизируем поле
+    for (int i = 0;i <13; i++){//РёРЅРёС†РёР»РёР·РёСЂСѓРµРј РїРѕР»Рµ
             for(int tr = 0; tr< 31; tr++){
                 switch(mp[i][tr]){
             case 35:{
@@ -137,30 +138,30 @@ int main(){
                 cout << " ";
                 break;}
             case 42:{
-                cout << dye::red("*");//мина
+                cout << dye::red("*");//РјРёРЅР°
                 break;}
             case 101:{
-                Enemy atr;
-                atr.setcords(i, tr);
-                Enemies.push_back(atr);//заводим врага с нужными координатами и сохраняем в списке врагов
+                Enemy en;
+                en.setcords(i, tr);
+                Enemies.push_back(en);//Р·Р°РІРѕРґРёРј РІСЂР°РіР° СЃ РЅСѓР¶РЅС‹РјРё РєРѕРѕСЂРґРёРЅР°С‚Р°РјРё Рё СЃРѕС…СЂР°РЅСЏРµРј РІ СЃРїРёСЃРєРµ РІСЂР°РіРѕРІ
                 cout << dye::red("e");
                 break;}
             case 84:
-                MyTank.setcords(i, tr);//задаем нашему танку координаты, создан он глобально
+                MyTank.setcords(i, tr);//Р·Р°РґР°РµРј РЅР°С€РµРјСѓ С‚Р°РЅРєСѓ РєРѕРѕСЂРґРёРЅР°С‚С‹, СЃРѕР·РґР°РЅ РѕРЅ РіР»РѕР±Р°Р»СЊРЅРѕ
                 cout << dye::green("^");
                 break;
                 }}
                 cout << endl;
         }
         cout << endl;
-        cout << " " << name <<" "<< TankVariants[cur] << " HP: " << MyTank.gethp() << " Enemies left:" << Enemies.size() << " xp: "<< MyTank.xp <<"/" << MyTank.level*75+125<< " Level: " << MyTank.level << endl;
-//выводим информацию про танк/игру
+        cout << " " << name <<" "<< TankVariants[cur] <<endl<< " HP: " << MyTank.gethp() <<endl<< " Enemies left:" << Enemies.size() <<endl<< " xp: "<< MyTank.xp <<"/" << MyTank.level*75+125<<endl<< " Level: " << MyTank.level << endl;
+//РІС‹РІРѕРґРёРј РёРЅС„РѕСЂРјР°С†РёСЋ РїСЂРѕ С‚Р°РЅРє/РёРіСЂСѓ
     it = true;
     while (it){
         ending:
-            if (MyTank.chg_lev){//проверка на то, нужно ли обновить какой-либо навык
+            if (MyTank.chg_lev){//РїСЂРѕРІРµСЂРєР° РЅР° С‚Рѕ, РЅСѓР¶РЅРѕ Р»Рё РѕР±РЅРѕРІРёС‚СЊ РєР°РєРѕР№-Р»РёР±Рѕ РЅР°РІС‹Рє
                 cout << dye::green("You have upgraded from level ") << dye::green(MyTank.level - 1);
-                cout<< dye::green(" to " )<< dye::green(MyTank.level)<<endl;
+                cout << dye::green(" to " )<< dye::green(MyTank.level)<<endl;
                 cout << "Press 1- to upgrade damage, 2-to upgrade max health, 3-to upgrade Chance of Crit, 4-to upgrade Chance of Escape"<<endl;
                 bool it1 = true;
                 while(it1){
@@ -194,17 +195,17 @@ int main(){
             MyTank.chg_lev = false;
             }
         int c = getch();
-        switch(c){//наше действие
+        switch(c){//РЅР°С€Рµ РґРµР№СЃС‚РІРёРµ
         case 72:
             MyTank.mov(1, mp);
             break;
-            /*
+
         case 125:
             while(Enemies.size()>0){
                 Enemies.erase(Enemies.begin());
             }
             break;
-            */
+
         case 80:
             MyTank.mov(3, mp);
             break;
@@ -215,7 +216,7 @@ int main(){
             MyTank.mov(2, mp);
             break;
         case 32:
-            MyTank.shoot(MyTank.getor());
+            MyTank.shoot(MyTank.getor());// СЃС‚СЂРµР»СЏРµС‚ С‚СѓРґР°,  РєСѓРґР° РЅР°РїСЂР°РІР»РµРЅ
             break;
         case 113:
             return 0;
@@ -225,19 +226,19 @@ int main(){
             break;
         }
         for (vector<Bullet>::iterator it = MyTank.Bullets.begin(); it < MyTank.Bullets.end(); it++){
-            bool f =(*it).movfrwd(mp, true);//двигаем все пули нашего танка, при необходимости их удаляем
+            bool f =(*it).movfrwd(mp, true);//РґРІРёРіР°РµРј РІСЃРµ РїСѓР»Рё РЅР°С€РµРіРѕ С‚Р°РЅРєР°, РїСЂРё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РёС… СѓРґР°Р»СЏРµРј
                 if (!f)
                     it = MyTank.Bullets.erase(it);
         }
          for (int tre = 0; tre< Enemies.size(); tre++){
-                    Enemies[tre].movfrwd1(mp);//всех врагов двигаем и иногда они стреляют
+                    Enemies[tre].movfrwd1(mp);//РІСЃРµС… РІСЂР°РіРѕРІ РґРІРёРіР°РµРј Рё РёРЅРѕРіРґР° РѕРЅРё СЃС‚СЂРµР»СЏСЋС‚
                     Enemies[tre].shoot1(1);
          }
         endr:
-            clr; //очищает экран
+            clr; //РѕС‡РёС‰Р°РµС‚ СЌРєСЂР°РЅ
         pair<int, int> cords = MyTank.getcords();
-        if (MyTank.gethp()){
-        for (int i = 0;i <13; i++){//рисуем поле
+        if (MyTank.gethp()>0){
+        for (int i = 0;i <13; i++){//СЂРёСЃСѓРµРј РїРѕР»Рµ
             for(int tr = 0; tr< 31; tr++){
                 if (make_pair(i, tr) == cords){
                  int r = MyTank.getor();
@@ -257,8 +258,8 @@ int main(){
                  }
                 }else{
                     bool ind = 1;
-                for (vector<Bullet>::iterator it = MyTank.Bullets.begin(); it < MyTank.Bullets.end(); it++){
-                    if(make_pair(i, tr) == (*it).getcords()){
+                for (vector<Bullet>::iterator ity = MyTank.Bullets.begin(); ity < MyTank.Bullets.end(); ity++){
+                    if(make_pair(i, tr) == (*ity).getcords()){
                         cout << dye::green(".");
                         ind = 0;
                         goto drawmap;
@@ -274,15 +275,15 @@ int main(){
                                 Enemies.erase(Enemies.begin()+tre);
                                 tre--;}
                     }
-                    else{for(vector<Bullet>::iterator it = Enemies[tre].Bullets.begin(); it < Enemies[tre].Bullets.end(); it++){
-                    if(make_pair(i, tr) == (*it).getcords()){
+                    else{for(vector<Bullet>::iterator ity = Enemies[tre].Bullets.begin(); ity < Enemies[tre].Bullets.end(); ity++){
+                    if(make_pair(i, tr) == (*ity).getcords()){
                         cout << dye::red(".");
                         ind = 0;
                         goto drawmap;
                         }}
                         }}
             drawmap:
-            if (ind)
+            if (ind!=0)
                 switch(mp[i][tr]){
             case 35:{
                 cout << "#";
@@ -303,7 +304,8 @@ int main(){
                 cout << endl;
         }
         cout << endl;
-        cout << " " << name <<" "<< TankVariants[cur] << " HP: " << MyTank.gethp() << " Enemies left:" << Enemies.size() << " xp: "<< MyTank.xp <<"/" << MyTank.level*75+125<<" Level: " << MyTank.level << endl;}
+        cout << " " << name <<" "<< TankVariants[cur] <<endl<< " HP: " << MyTank.gethp() <<endl<< " Enemies left:" << Enemies.size() <<endl<< " xp: "<< MyTank.xp <<"/" << MyTank.level*75+125<<endl<< " Level: " << MyTank.level << endl;
+        }
         else{
             cout << dye::red("You died, sorry:(");
             it = false;
