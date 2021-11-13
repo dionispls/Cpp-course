@@ -4,6 +4,7 @@
 #include "Enemy.cpp"
 #include <stdlib.h>
 
+
 Bullet::Bullet(int x, int y, int dmg, int orient){
     this->orient = orient;
     this->dmg = dmg;
@@ -55,8 +56,8 @@ pair<int, int> Bullet::getcords(){
         return make_pair(x, y);
     }
 
-void Bullet::collision(bool rf){
-        if (rf == 0){
+void Bullet::collision(bool fr){
+        if (fr == 0){
             if (make_pair(Bullet::x, Bullet::y) == MyTank.getcords()){
                 if (rand() % max(MyTank.get_coe(), 3) != 0)
                     MyTank.hp = MyTank.hp- dmg;
@@ -65,16 +66,19 @@ void Bullet::collision(bool rf){
         else{
         for (int i = 0; i < Enemies.size(); i++){
             if (make_pair(Bullet::x, Bullet::y) == Enemies[i].getcords()){
+                Enemies[i].hp -= Bullet::dmg;
+                if (rand() % max(MyTank.get_coc(), 3) == 0)
+                    Enemies[i].hp -= Bullet::dmg;
+                if (Enemies[i].hp <= 0){
                 MyTank.xp += MyTank.get_ax();
                 if (MyTank.xp >= 125+75*MyTank.level){
                     MyTank.xp =MyTank.xp%(125+75*MyTank.level);
                     MyTank.level++;
                     MyTank.chg_lev = true;
                 }
-                if (rand() % max(MyTank.get_coc(), 3) == 0)
-                    Enemies[i].hp -= Bullet::dmg;
-                Enemies[i].hp -= Bullet::dmg;
-                Bullet::orient = 5;}
+                }
+                Bullet::orient = 5;
+                }
         }
     }}
 #endif // Ted
