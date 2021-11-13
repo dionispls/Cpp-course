@@ -2,7 +2,7 @@
 Enemy::Enemy (){
         orient = rand()%4;
         hp = 70 + rand() % 60;
-        dmg = 8 + rand() % 10;
+        dmg = 20 + rand() % 10;
     }
 
 void Enemy::shoot1(int orien){
@@ -14,18 +14,16 @@ bool Enemy::movfrwd1(string *mp){
             orient = rand() %4;
             return true;
         }
-        if (rand()%5==0){//раз в 5 ходов стреляет
+        if (rand()%5==0){//Г°Г Г§ Гў 5 ГµГ®Г¤Г®Гў Г±ГІГ°ГҐГ«ГїГҐГІ
             shoot1(orient);}
-        if (rand()%5 == 0)//чтобы менял направление
-            orient = rand() %4;
-        for (vector<Bullet>::iterator it = Bullets.begin(); it < Bullets.end(); it++){//рендерим движение всех пуль для данного танка
+        for (vector<Bullet>::iterator it = Bullets.begin(); it < Bullets.end(); it++){//Г°ГҐГ­Г¤ГҐГ°ГЁГ¬ Г¤ГўГЁГ¦ГҐГ­ГЁГҐ ГўГ±ГҐГµ ГЇГіГ«Гј Г¤Г«Гї Г¤Г Г­Г­Г®ГЈГ® ГІГ Г­ГЄГ 
             bool f =(*it).movfrwd(mp, false);
             if (!f)
                 it = Bullets.erase(it);
         }
         switch(orient){
-            case 1:
-                if (mp[x-1][y] != 35){
+    case 1:
+        if (mp[x-1][y] != 35){
         x--;}
         else
         orient = rand() %4;
